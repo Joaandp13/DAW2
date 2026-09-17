@@ -1,5 +1,9 @@
 "use strict";
 
+import { convertidor } from "./functions.js";
+
+
+
 /*
 	CATEGORIES SEGONS L'IMC
 		IMC < 16		Infrapès sever
@@ -31,7 +35,7 @@ function imc(pes:string, altura:string) : string {
 
 	alturaNum = alturaNum / 100;
 	
-	let imcNum = (pesoNum/alturaNum)
+	let imcNum = (pesoNum/Math.pow(alturaNum, 2))
 	
 	if (imcNum < 16) {
 		return imcNum.toFixed(2) +"-"+ "Delgadez severa";
@@ -54,21 +58,25 @@ function imc(pes:string, altura:string) : string {
 	
 }
 
-
+function _imc() {
+	let r : string= imc((document.getElementById('pes') as HTMLInputElement).value, (document.getElementById('altura') as HTMLInputElement).value);
+	if (r != undefined) {
+		let v = r.split("-");
+		(document.getElementById("imc") as HTMLElement).innerHTML = v[0];
+		(document.getElementById("categoria") as HTMLElement).innerHTML = v[1];
+	}
+}
+			
+function _convertidor() {
+	let r = convertidor((document.getElementById('m1') as HTMLInputElement).value, (document.getElementById('cm1') as HTMLInputElement).value, (document.getElementById('cm2') as HTMLInputElement).value);
+	if (r != undefined) (document.getElementById("m2") as HTMLElement).innerHTML = r;
+}
 
 /**
  * Convertir unitats de longitud.
  * 
- * @param valor	Longitud a convertir
- * @param uni1	Unitats de la longitud (mm, cm, dm, m, Dm, Hm, Km)
- * @param uni2	A quines unitats s'ha de convertir (mm, cm, dm, m, Dm, Hm, Km)
- * @return 		Longitud convertida amb 4 dígits significatius
- * 
- * 						Exemples:
- * 						12.4 Dm --> 124.0 m
- * 						12.4 Km --> 1.240e+4 m
+ * @param valor Longitud a convertir
+ * @param uni1  Unitats de la longitud (mm, cm, dm, m, Dm, Hm, Km)
+ * @param uni2  A quines unitats s'ha de convertir (mm, cm, dm, m, Dm, Hm, Km)
+ * @return      Longitud convertida amb 4 dígits significatius
  */
-function convertidor(valor:string, uni1:string, uni2:string) : string {
-
-	return "";
-}
