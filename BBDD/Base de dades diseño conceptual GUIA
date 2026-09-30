@@ -1,0 +1,12 @@
+Base de dades diseño conceptual
+
+ENTIDADES: en mayúscula, si son de muchas a muchas, hacer una tabla intermedia
+EJ: alumno/asignaturas
+Un alumno puede tener muchas asignaturas, y una asignatura puede tener muchos alumnos, asi que se hace la tabla Alumno_Asignatura
+
+CARDINALIDADES: señalar cuantos pueden tener cuantos puede tener,
+apuntar "al reves", si es Cuantas asignaturas tiene un alumno? Muchas, entonces se pone del lado de asignaturas Alumne----N-Asignatures
+
+
+
+RELACIONES: las relaciones tienen que tener el nombre (esta matriculado, enseña, vive, etc...)

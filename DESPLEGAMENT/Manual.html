@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Manual de Markdown</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <span id="markdown-mermaid" aria-hidden="true" data-config="{&quot;darkModeTheme&quot;:&quot;vscode&quot;,&quot;lightModeTheme&quot;:&quot;vscode&quot;,&quot;maxTextSize&quot;:50000,&quot;clickDrag&quot;:&quot;alt&quot;,&quot;showControls&quot;:&quot;onHoverOrFocus&quot;,&quot;resizable&quot;:true,&quot;maxHeight&quot;:&quot;&quot;}"></span>
+				<h1 id="manual-de-markdown">Manual de Markdown</h1>
+<h2 id="encapçalaments">Encapçalaments</h2>
+<p>Els encapçalaments s'utilitzen amb <code>#</code>:</p>
+<h1 id="encapçalament-1">Encapçalament 1</h1>
+<h2 id="encapçalament-2">Encapçalament 2</h2>
+<h3 id="encapçalament-3">Encapçalament 3</h3>
+<h4 id="encapçalament-4">Encapçalament 4</h4>
+<h5 id="encapçalament-5">Encapçalament 5</h5>
+<h6 id="encapçalament-6">Encapçalament 6</h6>
+<hr>
+<h2 id="llistes">Llistes</h2>
+<h3 id="llista-desordenada">Llista desordenada</h3>
+<ul>
+<li>Element 1</li>
+<li>Element 2
+<ul>
+<li>Subelement 2.1</li>
+<li>Subelement 2.2</li>
+</ul>
+</li>
+<li>Element 3</li>
+</ul>
+<h3 id="llista-ordenada">Llista ordenada</h3>
+<ol>
+<li>Primer element</li>
+<li>Segon element
+<ol>
+<li>Subelement 2.1</li>
+<li>Subelement 2.2</li>
+</ol>
+</li>
+<li>Tercer element</li>
+</ol>
+<hr>
+<h2 id="taules">Taules</h2>
+<table>
+<thead>
+<tr>
+<th>Columna 1</th>
+<th>Columna 2</th>
+<th>Columna 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dada 1</td>
+<td>Dada 2</td>
+<td>Dada 3</td>
+</tr>
+<tr>
+<td>Dada 4</td>
+<td>Dada 5</td>
+<td>Dada 6</td>
+</tr>
+<tr>
+<td>Dada 7</td>
+<td>Dada 8</td>
+<td>Dada 9</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="imatges">Imatges</h2>
+<p>Sintaxi: <code>![Text alternatiu](URL)</code></p>
+<p><img src="https://www.montesdevalsain.es/images/Comun1_a.jpg" alt="Logo"></p>
+<hr>
+<h2 id="enllaços">Enllaços</h2>
+<p>Sintaxi: <code>[Text de l'enllaç](URL)</code></p>
+<p><a href="https://www.google.com">Manual MD</a></p>
+<p><a href="#encap%C3%A7alaments">Enllaç a una secció</a></p>
+<hr>
+<h2 id="negrita-i-cursiva">Negrita i Cursiva</h2>
+<ul>
+<li><strong>Negrita</strong> s'utilitza amb <code>**text**</code></li>
+<li><em>Cursiva</em> s'utilitza amb <code>*text*</code></li>
+<li><em><strong>Negrita i cursiva</strong></em> s'utilitza amb <code>***text***</code></li>
+</ul>
+<hr>
+<h2 id="caixes-dinformació">Caixes d'informació</h2>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>Això és una caixa de consell.</p>
+</div>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p><p>Això és una caixa d'avís.</p>
+</div>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>Això és una caixa de nota.</p>
+</div>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p>Això és una caixa de precaució.</p>
+</div>
+<hr>
+<h2 id="cita-en-bloc">Cita en bloc</h2>
+<blockquote>
+<p>Aquesta és una cita en bloc.</p>
+</blockquote>
+<hr>
+<h2 id="codi">Codi</h2>
+<h3 id="codi-inline">Codi inline</h3>
+<p>Utilitza <code>console.log(&quot;Hola&quot;);</code> per imprimir a la consola.</p>
+<h3 id="bloc-de-codi">Bloc de codi</h3>
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">hola</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;Hola, món!&quot;</span>);
+}
+</code></pre>
+<hr>
+<h2 id="línia-separadora">Línia separadora</h2>
+<p>La pots crear amb <code>---</code>, <code>***</code> o <code>___</code></p>
+
+            
+            
+        </body>
+        </html>
