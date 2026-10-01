@@ -1,0 +1,24 @@
+# ===== XAMPP: ignorar todo salvo htdocs =====
+BACKEND/XAMPP/*
+!BACKEND/XAMPP/htdocs/
+
+# Contenido por defecto de htdocs (tus proyectos NO se ignoran)
+BACKEND/XAMPP/htdocs/applications.html
+BACKEND/XAMPP/htdocs/bitnami.css
+BACKEND/XAMPP/htdocs/favicon.ico
+BACKEND/XAMPP/htdocs/index.php
+BACKEND/XAMPP/htdocs/dashboard/
+BACKEND/XAMPP/htdocs/img/
+BACKEND/XAMPP/htdocs/webalizer/
+BACKEND/XAMPP/htdocs/xampp/
+
+# ===== Vagrant =====
+.vagrant/
+
+# ===== Archivos sueltos que no son código =====
+FirefoxBackup_*.html
+arbol.txt
+.~lock.*#
+
+# Opcional: entregas comprimidas
+# *.zip
