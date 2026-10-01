@@ -1,6 +1,6 @@
 import { diccionari } from './Diccionari.js';
 
-function fill_array_random(num: number, array:any[]) : any[]{
+export function fill_array_random(num: number, array:any[]) : any[]{
     let a :any[] = []
 
     for(let i=0; i<num; ++i){
@@ -9,9 +9,9 @@ function fill_array_random(num: number, array:any[]) : any[]{
 
     return a;
 }
-
+/*
 const text = document.getElementById('textbox')
-function print_random_words(a : HTMLElement | null) : void {
+export function print_random_words(a : HTMLElement | null) : void {
     if(!a){
         return;
     }
@@ -53,4 +53,4 @@ const end = performance.now();
 console.log("Després:", words.length);
 console.log(`Temps: ${(end - start).toFixed(2)} ms`);
 
-print_random_words(text);
+print_random_words(text);*/
