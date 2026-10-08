@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funcions</title>
+<link rel="stylesheet" href="../estils.css">
+</head>
+<body>
+<nav><a href="../index.html">← Índex</a></nav>
+<h1>Funcions</h1>
+<section>
+<h3>1 - Retornar text o número</h3>
+<p><code>preuFinal(preuBase, dte, iva, num)</code>.</p>
+<button id="btn-ex1">Executar</button>
+<pre id="out-ex1"></pre>
+</section>
+<section>
+<h3>2 - Execució retardada</h3>
+<p>Mostra un missatge als 2 i als 4 segons.</p>
+<button id="btn-ex2">Executar</button>
+<pre id="out-ex2"></pre>
+</section>
+<section>
+<h3>3 - Mitjana indefinida</h3>
+<p>Números separats per espais o comes:</p>
+<input id="nums-mitjana" value="7 8.5 10 4" size="24"> <button id="btn-ex3">Executar</button>
+<pre id="out-ex3"></pre>
+</section>
+<section>
+<h3>4 - PI amb 101 dígits</h3>
+<p>Decimals:</p>
+<input id="decimals-pi" type="number" value="100" min="1" max="2000" style="width:6rem"> <button id="btn-ex4">Executar</button>
+<pre id="out-ex4"></pre>
+</section>
+<section>
+<h3>5 - La frase oculta</h3>
+<p>Digues lletres. Si l'ordinador està completament segur de la frase, guanya. Tu pots intentar endevinar-la en qualsevol moment.</p>
+<div class="frase" id="frase-oculta"></div>
+<p>Lletres dites: <span id="lletres-dites"></span></p>
+<input id="lletra" maxlength="1" size="3" placeholder="a"> <button id="btn-lletra">Dir lletra</button><br>
+<input id="intent" size="40" placeholder="Escriu la frase sencera"> <button id="btn-intent">Endevinar frase</button>
+<button id="btn-nova">Nova partida</button>
+<p id="missatge-joc"></p>
+</section>
+<section>
+<h3>6 - Anagrames</h3>
+<p>Paraula del diccionari:</p>
+<input id="paraula-anagrama" value="Murciélago"> <button id="btn-ex6">Executar</button>
+<pre id="out-ex6"></pre>
+</section>
+<section>
+<h3>7 - Concurs de paraules</h3>
+<p>Lletres disponibles (les paraules més llargues):</p>
+<input id="lletres-concurs" value="pjraabesa"> <button id="btn-ex7">Executar</button>
+<pre id="out-ex7"></pre>
+</section>
+
+<script type="module" src="Funcions.js"></script>
+</body>
+</html>

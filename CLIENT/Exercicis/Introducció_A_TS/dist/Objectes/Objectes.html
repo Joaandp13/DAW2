@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Objectes</title>
+<link rel="stylesheet" href="../estils.css">
+</head>
+<body>
+<nav><a href="../index.html">← Índex</a></nav>
+<h1>Objectes</h1>
+<section>
+<h3>1 - Cercar objectes dins d'un array</h3>
+<p><code>getObjectByValue</code>, <code>getObjectsByValue</code>, <code>getObjectsByPattern</code> i <code>getObjectsInRange</code> sobre els articles del supermercat.</p>
+<button id="btn-ex1">Executar</button>
+<pre id="out-ex1"></pre>
+</section>
+<section>
+<h3>2 - Clients</h3>
+<p>Taula amb 3 clients.</p>
+<button id="btn-ex2">Mostrar clients</button>
+<div id="out-ex2"></div>
+</section>
+<section>
+<h3>3 - Supermercat</h3>
+<p>Etiquetes dels articles i cerques per valor, rang i patró.</p>
+<button id="btn-ex3">Etiquetes</button><button id="btn-ex3b">Volum = 1.5</button><button id="btn-ex3c">Preu 6-10</button><button id="btn-ex3d">Descripció 'S?c de*'</button>
+<pre id="out-ex3"></pre><pre id="out-ex3b"></pre><pre id="out-ex3c"></pre><pre id="out-ex3d"></pre>
+</section>
+<section>
+<h3>4 - Expedients d'alumnes</h3>
+<p>Taula amb mitjanes i filtres (<code>filter()</code>).</p>
+<button id="btn-ex4">Tots</button><button id="btn-ex4a">Matriculats M02</button><button id="btn-ex4b">No matriculats M02</button><button id="btn-ex4c">Graduats</button>
+<div id="out-ex4"></div><div id="out-ex4a"></div><div id="out-ex4b"></div><div id="out-ex4c"></div>
+</section>
+<section>
+<h3>5 - Cotxe sense conductor</h3>
+<p>El programa de control decideix les accions per a diversos escenaris.</p>
+<button id="btn-ex5">Executar</button>
+<pre id="out-ex5"></pre>
+</section>
+<section>
+<h3>6 - Casa domòtica</h3>
+<p>Engega la casa i canvia els sensors: el programa els llegeix cada segon.</p>
+<input id="pluja" type="checkbox"><label for="pluja"> Sensor de pluja</label><br>
+Termòmetre <input id="termometre" type="number" value="22" min="10" max="40"><br>
+Sensors de presència:<br>
+&nbsp;&nbsp;<input id="presencia0" type="checkbox"><label for="presencia0"> Menjador</label>
+&nbsp;<input id="presencia1" type="checkbox"><label for="presencia1"> Lavabo</label>
+&nbsp;<input id="presencia2" type="checkbox"><label for="presencia2"> Habitació</label><br>
+<button id="btn-ex6">Engegar la casa</button>
+<textarea id="missatgeD" rows="6" readonly></textarea>
+</section>
+<p class="nota">Aquesta pàgina cobreix els apunts «Objectes» i «Objectes V2» (V2 és la versió ampliada).</p>
+<script type="module" src="Objectes.js"></script>
+</body>
+</html>

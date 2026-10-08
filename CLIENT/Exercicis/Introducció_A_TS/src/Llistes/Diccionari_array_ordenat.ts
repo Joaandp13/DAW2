@@ -1,4 +1,4 @@
-import { fill_array_random } from './Diccionari_array.js';
+/*import { fill_array_random } from './Diccionari_array.js';
 import { diccionari } from './Diccionari.js';
 
 let Diccionari: string[] = fill_array_random(10000, diccionari);
@@ -27,4 +27,4 @@ const end = performance.now();
 
 console.log("Després:", Diccionari.length);
 console.log("Repetides eliminades:", repetides);
-console.log(`Temps: ${(end - start).toFixed(2)} ms`);
+console.log(`Temps: ${(end - start).toFixed(2)} ms`);*/

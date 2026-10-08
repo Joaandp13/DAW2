@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototipus i classes · 2 Clients i factures</title>
+<link rel="stylesheet" href="../estils.css">
+</head>
+<body>
+<nav><a href="../index.html">← Índex</a></nav>
+<h1>Prototipus i classes · 2 Clients i factures</h1>
+<section>
+<h3>Afegir client</h3>
+NIF <input id="c-nif" placeholder="12345678Z" size="11"> Nom <input id="c-nom" size="10"> Cognoms <input id="c-cognoms" size="14">
+<button id="btn-client">Afegir client</button>
+</section>
+<section>
+<h3>Afegir factura</h3>
+Client <select id="f-client"></select> Data <input id="f-data" type="date" value="2026-10-08"> Import <input id="f-import" type="number" step="0.01" value="100" style="width:6rem">
+<input id="f-pagada" type="checkbox"><label for="f-pagada"> Pagada</label>
+<button id="btn-factura">Afegir factura</button>
+</section>
+<p id="missatge-cf"></p>
+<h3>Clients</h3>
+<div id="taula-clients"></div>
+<h3>Factures del client triat</h3>
+<div id="taula-factures"></div>
+
+<script type="module" src="ClientsFactures.js"></script>
+</body>
+</html>

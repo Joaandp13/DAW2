@@ -1,4 +1,4 @@
-import { diccionari } from './Diccionari.js';
+/*import { diccionari } from './Diccionari.js';
 import { fill_array_random } from './Diccionari_array.js';
 
 const Llista: string[] = fill_array_random(1000, diccionari);
@@ -27,4 +27,4 @@ const end = performance.now();
 
 console.log(`Trobades: ${trobades.length} de ${Llista2.length}`);
 console.log(trobades);
-console.log(`Temps: ${(end - start).toFixed(2)} ms`);
+console.log(`Temps: ${(end - start).toFixed(2)} ms`);*/

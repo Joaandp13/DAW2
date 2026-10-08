@@ -1,4 +1,4 @@
-import { diccionari } from './Diccionari.js';
+/*import { diccionari } from './Diccionari.js';
 
 export function fill_array_random(num: number, array:any[]) : any[]{
     let a :any[] = []
@@ -9,7 +9,7 @@ export function fill_array_random(num: number, array:any[]) : any[]{
 
     return a;
 }
-/*
+
 const text = document.getElementById('textbox')
 export function print_random_words(a : HTMLElement | null) : void {
     if(!a){

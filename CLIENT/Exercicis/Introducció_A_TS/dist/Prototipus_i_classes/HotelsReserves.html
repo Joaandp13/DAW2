@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototipus i classes · 3 Hotels i reserves</title>
+<link rel="stylesheet" href="../estils.css">
+</head>
+<body>
+<nav><a href="../index.html">← Índex</a></nav>
+<h1>Prototipus i classes · 3 Hotels i reserves</h1>
+<section>
+<h3>Reservar</h3>
+Hotel <select id="hotel"></select> NIF <input id="nif" placeholder="12345678Z" size="11"> Places <input id="places" type="number" min="1" value="2" style="width:4rem">
+<input id="individuals" type="checkbox"><label for="individuals"> Individuals</label><br>
+<button id="btn-reservar">Reservar / modificar</button><button id="btn-anular">Anul·lar reserva</button>
+<p class="nota">Si el NIF ja té reserva en aquest hotel, es modifica. Cada habitació és doble; amb «individuals» cada plaça ocupa una habitació.</p>
+</section>
+<p id="missatge-h"></p>
+<h3>Hotels</h3>
+<div id="taula-hotels"></div>
+<h3>Reserves de l'hotel triat</h3>
+<div id="taula-reserves"></div>
+
+<script type="module" src="Aplicacio.js"></script>
+</body>
+</html>
