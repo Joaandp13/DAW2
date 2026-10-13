@@ -2,14 +2,14 @@ export class Agenda {
     static contactes = new Map();
     afegir(contacte) {
         if (Agenda.contactes.has(contacte.telefon)) {
-            throw new Error("Ya existe un contacto con este teléfono");
+            throw new Error("Ya existeix un contacte amb aquest telèfon.");
         }
         Agenda.contactes.set(contacte.telefon, contacte);
     }
     modificar(telefon, nom, email, categoria) {
         const contacte = Agenda.contactes.get(telefon);
         if (!contacte) {
-            throw new Error("No existe un contacto con este teléfono");
+            throw new Error("No existix un contacte amb aquest telèfon");
         }
         contacte.modificar(nom, email, categoria);
     }

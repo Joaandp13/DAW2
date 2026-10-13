@@ -148,8 +148,8 @@ function carregarDadesProva(dades: unknown): void {
     });
 
     // Mostra el resum i els errors de les dades rebutjades.
-    const resum = `S'han afegit ${dadesAcceptades} contactes de prova. S'han rebutjat ${dadesRebutjades} dades.`;
-    divResultat.textContent = errors.length > 0 ? `${resum} ${errors.join(" ")}` : resum;
+    const resum = `S'han afegit ${dadesAcceptades} contactes de prova. S'han rebutjat ${dadesRebutjades} dades.\n`;
+    divResultat.textContent = errors.length > 0 ? `${resum} ${errors.join("\n")}` : resum;
 }
 
 carregarDadesProva(DADES_PROVA);
