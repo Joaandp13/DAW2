@@ -1,8 +1,8 @@
 # ===== XAMPP: ignorar todo salvo htdocs =====
 BACKEND/XAMPP/*
 
-!BACKEND/XAMPP/htdocs/
-BACKEND/XAMPP/htsdocs/FotoCasaApiTest
+!BACKEND/XAMPP/htdocs/NF1
+
 # Contenido por defecto de htdocs (tus proyectos NO se ignoran)
 BACKEND/XAMPP/htdocs/applications.html
 BACKEND/XAMPP/htdocs/bitnami.css
