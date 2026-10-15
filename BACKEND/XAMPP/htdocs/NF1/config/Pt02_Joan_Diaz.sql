@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS `Pt02_Joan_Diaz`;
+
+USE `Pt02_Joan_Diaz`;
+
+CREATE TABLE articles(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titol VARCHAR(50),
+    cos TEXT
+);

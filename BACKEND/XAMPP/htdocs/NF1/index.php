@@ -1,50 +1,25 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulari</title>
-    <link rel="stylesheet" href="view/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articles</title>
+  <link rel="icon" href="img/skull.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="view/styles/style.css">
 </head>
-
 <body>
-
-    <form action="Controller/check.php" method="post">
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" name="nom" >
-        <br><br>
-
-        <label for="email">Adreça de correu:</label>
-        <input type="email" id="email" name="email" >
-        <br><br>
-        
-        <label for="asunto">Asunto:</label>
-        <input type="text" id="asunto" name="asunto">
-        <br><br>
-
-        <label for="sendmail">Enviar Correu?</label>
-        <input type="checkbox" id="sendmail" name="sendmail" value="1">
-        <br><br>
-
-        <label for="text">Text:</label>
-        <textarea id="text" name="text" required></textarea>
-        <br><br>
-
-        <button type="submit">Enviar</button>
-        <button type="reset">Neteja</button>
-    </form>
-
-    <script>
-        const sendCheckbox = document.getElementById('sendmail');
-        const subjectField = document.getElementById('asunto');
-        const textField = document.getElementById('text')
-        function updateSubjectRequirement() {
-            subjectField.required = sendCheckbox.checked;
-            textField.required = sendCheckbox.checked;
-        }
-
-        sendCheckbox.addEventListener('change', updateSubjectRequirement);
-        updateSubjectRequirement();
-    </script>
+  <h1>Articles GI</h1>
+  <form>
+    <label for="article">Introdueix l'id del article:</label>
+    <input type="number" id="article" name="article">
+    <label for="titol">Introdueix el títol de l'article:</label>
+    <input type="text" id="titol" name="titol">
+    <label for="cos">Introdueix el cos de l'article:</label>
+    <input type="text" id="cos" name="cos">
+    <button type="submit">Cercar per id</button>
+    <button type="submit">Cercar per títol</button>
+    <button type="submit">Esborrar per id</button>
+    <button type="button" onclick="window.location.href='view/Article/insertarArticle.php'">Insertar nou article</button>
+  </form>
 </body>
 </html>

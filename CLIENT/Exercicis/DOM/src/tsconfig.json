@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "rootDir": ".",
+    "outDir": "../dist",
+    "strict": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "noEmitOnError": true,
+    "noImplicitAny":true,
+    "removeComments": true,
+    "allowJs": false
+
+  }
+}
