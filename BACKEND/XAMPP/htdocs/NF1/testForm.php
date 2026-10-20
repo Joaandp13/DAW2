@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/Controller/check.php'; ?>
 <!DOCTYPE html>
 <html lang="ca">
 <head>
@@ -9,42 +10,41 @@
 
 <body>
 
-    <form action="Controller/check.php" method="post">
+    <form method="post">
         <label for="nom">Nom:</label>
-        <input type="text" id="nom" name="nom" >
+        <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'); ?>">
         <br><br>
 
         <label for="email">Adreça de correu:</label>
-        <input type="email" id="email" name="email" >
+        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>">
         <br><br>
         
         <label for="asunto">Asunto:</label>
-        <input type="text" id="asunto" name="asunto">
+        <input type="text" id="asunto" name="asunto" value="<?php echo htmlspecialchars($asunto, ENT_QUOTES, 'UTF-8'); ?>">
         <br><br>
 
         <label for="sendmail">Enviar Correu?</label>
-        <input type="checkbox" id="sendmail" name="sendmail" value="1">
+        <input type="checkbox" id="sendmail" name="sendmail" value="1"<?php echo $sendMail ? ' checked' : ''; ?>>
         <br><br>
 
         <label for="text">Text:</label>
-        <textarea id="text" name="text" required></textarea>
+        <textarea id="text" name="text"><?php echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></textarea>
         <br><br>
 
         <button type="submit">Enviar</button>
         <button type="reset">Neteja</button>
     </form>
 
-    <script>
-        const sendCheckbox = document.getElementById('sendmail');
-        const subjectField = document.getElementById('asunto');
-        const textField = document.getElementById('text')
-        function updateSubjectRequirement() {
-            subjectField.required = sendCheckbox.checked;
-            textField.required = sendCheckbox.checked;
-        }
+    <?php if ($successMessage !== null): ?>
+        <p role="status"><?php echo htmlspecialchars($successMessage, ENT_QUOTES, 'UTF-8'); ?></p>
+    <?php endif; ?>
 
-        sendCheckbox.addEventListener('change', updateSubjectRequirement);
-        updateSubjectRequirement();
-    </script>
+    <?php if ($errors !== []): ?>
+        <ul role="alert">
+            <?php foreach ($errors as $error): ?>
+                <li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 </body>
 </html>

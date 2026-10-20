@@ -15,7 +15,7 @@ BACKEND/XAMPP/htdocs/xampp/
 
 # ===== Vagrant =====
 .vagrant/
-
+DESPLEGAMENT/Docker
 # ===== Archivos sueltos que no son código =====
 FirefoxBackup_*.html
 arbol.txt
