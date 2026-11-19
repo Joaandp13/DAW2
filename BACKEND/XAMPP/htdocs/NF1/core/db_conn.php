@@ -9,7 +9,7 @@ class Database
     {
         if (self::$connexio === null) {
             // Crida a la BDD amb el format que demana l'enunciat
-            self::$connexio = new PDO('mysql:host=localhost;dbname=pt02_joan_diaz;charset=utf8mb4', 'root', '');
+            self::$connexio = new PDO('mysql:host=localhost;dbname=backend_joan_diaz;charset=utf8mb4', 'root', '');
 
             // Mostrar errors com a excepcions i retornar arrays associatius
             self::$connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercici 3 · Obrir i controlar finestres</title>
+  <link rel="stylesheet" href="../estils.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Finestres · Exercici 3</p>
+    <h1>Obrir i controlar finestres</h1>
+    <p>
+      Practica <code>window.open()</code>, el nom de finestra, la detecció de
+      popups bloquejats i els mètodes <code>focus()</code>, <code>moveTo()</code>,
+      <code>resizeTo()</code> i <code>close()</code>.
+    </p>
+  </header>
+
+  <main>
+    <section class="panell">
+      <h2>Paràmetres de la finestra emergent</h2>
+      <p class="nota">
+        Les mides i la posició s'expressen en píxels de pantalla. Si deixes un
+        camp buit, s'utilitza el valor inicial calculat.
+      </p>
+
+      <div class="camps">
+        <label for="amplada">Amplada (px)
+          <input type="number" id="amplada" min="200" step="10">
+        </label>
+        <label for="alcada">Alçada (px)
+          <input type="number" id="alcada" min="150" step="10">
+        </label>
+        <label for="esquerra">Posició X (left)
+          <input type="number" id="esquerra" min="0" step="10">
+        </label>
+        <label for="dalt">Posició Y (top)
+          <input type="number" id="dalt" min="0" step="10">
+        </label>
+      </div>
+
+      <div class="controls">
+        <button id="btnObrir" type="button">Obrir finestra</button>
+        <button id="btnEnfocar" type="button" class="secundari">Enfocar</button>
+        <button id="btnCentrar" type="button" class="secundari">Centrar</button>
+        <button id="btnMoure" type="button" class="secundari">Moure</button>
+        <button id="btnRedimensionar" type="button" class="secundari">Redimensionar</button>
+        <button id="btnEstat" type="button" class="secundari">Comprovar estat</button>
+        <button id="btnTancar" type="button" class="perill">Tancar</button>
+      </div>
+
+      <p id="estat" class="estat">Carregant…</p>
+    </section>
+
+    <section class="panell">
+      <h2>Registre d'accions</h2>
+      <p class="nota">
+        Cada acció queda registrada amb l'hora. Observa què passa quan la
+        finestra es tanca des de dins o quan el navegador bloqueja el popup.
+      </p>
+      <ol id="log" class="log"></ol>
+    </section>
+  </main>
+</body>
+</html>

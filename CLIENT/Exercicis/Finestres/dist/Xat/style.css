@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+textarea#chat {
+    width: 100%;
+    height: 60vh;
+}
+
+input#message {
+    width: 100%;
+}

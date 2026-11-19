@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finestra filla · Exercici 3</title>
+  <link rel="stylesheet" href="../estils.css">
+  <script type="module" src="fill.js"></script>
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Finestres · Exercici 3 · Finestra filla</p>
+    <h1>Aquesta és la finestra emergent</h1>
+    <p>
+      S'ha obert amb <code>window.open("fill.html", "finestraExercici3", …)</code>.
+      Des d'aquí pots enfocar la finestra pare (<code>window.opener</code>) o
+      tancar-te a tu mateixa.
+    </p>
+  </header>
+
+  <main>
+    <section class="panell">
+      <h2>Propietats de la finestra</h2>
+      <pre id="info"></pre>
+    </section>
+
+    <section class="panell">
+      <h2>Accions</h2>
+      <div class="controls">
+        <button id="btnOpener" type="button">Enfocar l'opener</button>
+        <button id="btnMides" type="button" class="secundari">Tornar a llegir mides</button>
+        <button id="btnTancar" type="button" class="perill">Tancar aquesta finestra</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Registre</h2>
+      <ol id="log" class="log"></ol>
+    </section>
+  </main>
+</body>
+</html>

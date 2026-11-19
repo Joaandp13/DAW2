@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 - Multimèdia</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .media-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+        button { padding: 6px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>5 - Multimèdia</h1>
+    <p>Selecciona un fitxer d'àudio o vídeo per provar els controls de reproducció, avanç, retrocés i volum.</p>
+    <label for="mediaFile">Fitxer multimèdia:</label>
+    <input id="mediaFile" type="file" accept="audio/*,video/*">
+    <div id="mediaPlayer"></div>
+    <div id="mediaControls"></div>
+    <p id="mediaStatus" role="status" aria-live="polite"></p>
+    <script type="module" src="./2/multimediaDemo.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercici 8 · Emmagatzematge i cicle de vida</title>
+  <link rel="stylesheet" href="../estils.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Finestres · Exercici 8</p>
+    <h1>Emmagatzematge i cicle de vida de la finestra</h1>
+    <p>
+      Compara <code>localStorage</code> i <code>sessionStorage</code>, escolta
+      l'esdeveniment <code>storage</code>, comprova els estats
+      <code>online/offline</code>, <code>visibilitychange</code> i
+      <code>beforeunload</code>, i comunica pestanyes amb
+      <code>BroadcastChannel</code>.
+    </p>
+  </header>
+
+  <main>
+    <section class="panell">
+      <h2>Emmagatzematge web</h2>
+      <p class="nota">
+        Escriu una clau i un valor, tria l'emmagatzematge i observa la diferència:
+        <code>localStorage</code> sobreviu al tancament; <code>sessionStorage</code>
+        només dura la pestanya actual.
+      </p>
+      <div class="camps">
+        <label for="clau">Clau
+          <input type="text" id="clau" value="nom">
+        </label>
+        <label for="valor">Valor
+          <input type="text" id="valor" value="Joan">
+        </label>
+      </div>
+
+      <div class="dues-columnes">
+        <div>
+          <h3>localStorage</h3>
+          <div class="controls">
+            <button id="btnLocalSet" type="button">Desa</button>
+            <button id="btnLocalGet" type="button" class="secundari">Llegeix</button>
+            <button id="btnLocalRemove" type="button" class="secundari">Esborra clau</button>
+            <button id="btnLocalClear" type="button" class="perill">Buida</button>
+          </div>
+          <pre id="localInfo" style="margin-top: 0.75rem;"></pre>
+        </div>
+
+        <div>
+          <h3>sessionStorage</h3>
+          <div class="controls">
+            <button id="btnSessionSet" type="button">Desa</button>
+            <button id="btnSessionGet" type="button" class="secundari">Llegeix</button>
+            <button id="btnSessionRemove" type="button" class="secundari">Esborra clau</button>
+            <button id="btnSessionClear" type="button" class="perill">Buida</button>
+          </div>
+          <pre id="sessionInfo" style="margin-top: 0.75rem;"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Cicle de vida i estat de la finestra</h2>
+      <p class="nota">
+        Connectivitat: <span id="connectivitat">…</span> ·
+        Visibilitat del document: <span id="visibilitat">…</span>
+      </p>
+      <pre id="infoFinestra"></pre>
+      <div class="controls" style="margin-top: 1rem;">
+        <label style="flex-direction: row; align-items: center; gap: 0.45rem;">
+          <input type="checkbox" id="avisTancar">
+          Avisa abans de tancar o recarregar
+        </label>
+        <button id="btnNovaPestanya" type="button" class="secundari">Obre una altra pestanya</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2><code>BroadcastChannel</code></h2>
+      <p class="nota">
+        Obre una altra pestanya d'aquest mateix exercici i envia un missatge. El
+        canal <code>"finestres8"</code> el rebrà a totes les pestanyes excepte a
+        l'emissora.
+      </p>
+      <div class="camps">
+        <label for="canalText">Missatge per a les altres pestanyes
+          <input type="text" id="canalText" placeholder="Hola des d'una altra pestanya">
+        </label>
+      </div>
+      <div class="controls">
+        <button id="btnCanal" type="button">Envia pel canal</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Registre d'esdeveniments</h2>
+      <ol id="log" class="log"></ol>
+    </section>
+  </main>
+</body>
+</html>

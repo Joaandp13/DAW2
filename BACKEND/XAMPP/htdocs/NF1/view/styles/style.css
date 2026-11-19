@@ -1,18 +1,25 @@
 :root {
   color-scheme: light;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #1d2939;
-  background: #f3f6fb;
+  color: #f2f2f1;
+  background: #121628;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --color-primary: #3157c8;
-  --color-primary-hover: #2446aa;
-  --color-border: #d0d8e5;
-  --color-muted: #667085;
-  --surface: #ffffff;
-  --shadow: 0 12px 32px rgb(27 46 94 / 9%);
+  --color-font: #121628;
+  --color-navbar: #262c40;
+  --color-headings: #1d2240;
+  --color-results: #e8b84a;
+  --color-placeholder: #7a82a5;
+  --color-details: #a9b0cc;
+  --color-main: #f2f2f1;
+  --color-primary: var(--color-results);
+  --color-primary-hover: #d9a735;
+  --color-border: var(--color-details);
+  --color-muted: var(--color-placeholder);
+  --surface: var(--color-details);
+  --shadow: 0 12px 32px rgb(0 0 0 / 24%);
 }
 
 * {
@@ -24,9 +31,73 @@ body {
   margin: 0;
   padding: clamp(1.5rem, 6vw, 4rem) 1rem;
   background:
-    radial-gradient(ellipse at top, rgb(49 87 200 / 8%), transparent 50%),
-    #f3f6fb;
+    radial-gradient(ellipse at top, rgb(232 184 74 / 10%), transparent 50%),
+    var(--color-font);
+  color: var(--color-main);
   line-height: 1.5;
+}
+
+.bg-font {
+  background-color: var(--color-font);
+  color: var(--color-main);
+}
+
+.bg-navbar {
+  background-color: var(--color-navbar);
+  color: var(--color-main);
+}
+
+.bg-headings {
+  background-color: var(--color-headings);
+  color: var(--color-main);
+}
+
+.bg-results {
+  background-color: var(--color-results);
+  color: var(--color-font);
+}
+
+.bg-placeholder {
+  background-color: var(--color-placeholder);
+  color: var(--color-main);
+}
+
+.bg-details {
+  background-color: var(--color-details);
+  color: var(--color-font);
+}
+
+.bg-main {
+  background-color: var(--color-main);
+  color: var(--color-font);
+}
+
+.text-font {
+  color: var(--color-font);
+}
+
+.text-navbar {
+  color: var(--color-navbar);
+}
+
+.text-headings {
+  color: var(--color-headings);
+}
+
+.text-results {
+  color: var(--color-results);
+}
+
+.text-placeholder {
+  color: var(--color-placeholder);
+}
+
+.text-details {
+  color: var(--color-details);
+}
+
+.text-main {
+  color: var(--color-main);
 }
 
 h1,
@@ -34,7 +105,7 @@ h2,
 h3 {
   max-width: 42rem;
   margin: 0 auto 1.25rem;
-  color: #172554;
+  color: var(--color-main);
   line-height: 1.2;
 }
 
@@ -59,7 +130,7 @@ form {
   width: min(100%, 42rem);
   margin: 0 auto;
   padding: clamp(1.25rem, 4vw, 2rem);
-  border: 1px solid rgb(208 216 229 / 75%);
+  border: 1px solid var(--color-details);
   border-radius: 1rem;
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -70,7 +141,7 @@ form br {
 }
 
 label {
-  color: #344054;
+  color: var(--color-font);
   font-size: 0.95rem;
   font-weight: 600;
 }
@@ -83,8 +154,8 @@ select {
   padding: 0.65rem 0.8rem;
   border: 1px solid var(--color-border);
   border-radius: 0.55rem;
-  background: #fff;
-  color: inherit;
+  background: var(--color-main);
+  color: var(--color-font);
   font: inherit;
   transition: border-color 150ms ease, box-shadow 150ms ease;
 }
@@ -107,7 +178,7 @@ textarea:focus-visible,
 select:focus-visible,
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid rgb(49 87 200 / 28%);
+  outline: 3px solid rgb(232 184 74 / 55%);
   outline-offset: 2px;
 }
 
@@ -115,7 +186,7 @@ input:not([type="checkbox"]):not([type="radio"]):focus,
 textarea:focus,
 select:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgb(49 87 200 / 12%);
+  box-shadow: 0 0 0 3px rgb(232 184 74 / 24%);
 }
 
 button,
@@ -126,7 +197,7 @@ input[type="reset"] {
   border: 1px solid var(--color-primary);
   border-radius: 0.55rem;
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-font);
   font: inherit;
   font-weight: 650;
   cursor: pointer;
@@ -149,14 +220,14 @@ input[type="reset"]:active {
 button[type="reset"],
 input[type="reset"] {
   border-color: var(--color-border);
-  background: #fff;
-  color: #344054;
+  background: var(--color-main);
+  color: var(--color-font);
 }
 
 button[type="reset"]:hover,
 input[type="reset"]:hover {
-  border-color: #aab5c5;
-  background: #f8fafc;
+  border-color: var(--color-placeholder);
+  background: var(--color-main);
 }
 
 a {
@@ -173,9 +244,185 @@ a:hover {
   overflow-wrap: anywhere;
 }
 
+.message,
+.errors,
+.article-result,
+.table-container {
+  width: min(100%, 42rem);
+  margin: 1rem auto;
+}
+
+.message,
+.article-result {
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--color-font);
+}
+
+.errors {
+  padding: 1rem 1rem 1rem 2.5rem;
+  border: 1px solid var(--color-results);
+  border-radius: 0.75rem;
+  background: var(--color-details);
+  color: var(--color-font);
+}
+
+.article-result p {
+  overflow-wrap: anywhere;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  color: var(--color-font);
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+th {
+  background: var(--color-navbar);
+  color: var(--color-main);
+}
+
+.home-page {
+  min-height: 100vh;
+  padding: 0;
+}
+
+.site-header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid var(--color-font);
+  background: var(--color-navbar);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100% - 2rem, 72rem);
+  min-height: 4.5rem;
+  margin: 0 auto;
+}
+
+.site-brand {
+  color: var(--color-main);
+  font-size: 1.25rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.site-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 0.55rem;
+  background: var(--color-primary);
+  color: var(--color-font);
+  font-weight: 650;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.button:hover {
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+  color: var(--color-font);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button-secondary {
+  border-color: var(--color-details);
+  background: var(--color-main);
+  color: var(--color-font);
+}
+
+.button-secondary:hover {
+  border-color: var(--color-placeholder);
+  background: var(--color-details);
+  color: var(--color-font);
+}
+
+.home-main {
+  display: grid;
+  min-height: calc(100vh - 4.5rem);
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.home-card {
+  width: min(100%, 42rem);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 1px solid var(--color-details);
+  border-radius: 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--color-font);
+  text-align: center;
+}
+
+.home-card h1 {
+  margin-bottom: 1rem;
+  color: var(--color-headings);
+}
+
+.home-card p {
+  margin-bottom: 1.5rem;
+  color: var(--color-font);
+}
+
 @media (max-width: 32rem) {
   body {
     padding: 1.5rem 0.75rem;
+  }
+
+  .home-page {
+    padding: 0;
+  }
+
+  .site-nav {
+    width: calc(100% - 1.5rem);
+  }
+
+  .site-nav-links {
+    gap: 0.5rem;
+  }
+
+  .site-nav-links .button {
+    min-height: 2.5rem;
+    padding: 0.5rem 0.65rem;
+    font-size: 0.875rem;
   }
 
   form {
@@ -189,5 +436,147 @@ a:hover {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Joan Diaz - Pràctica 04: estils de la llista d'articles i l'autenticació */
+
+.articles-main {
+  width: min(100% - 2rem, 72rem);
+  margin: 5.5rem auto 3rem;
+}
+
+.articles-main h1 {
+  margin-left: 0;
+}
+
+.articles-intro {
+  max-width: 42rem;
+  margin: 0 0 1.5rem;
+  color: var(--color-details);
+}
+
+.nav-user {
+  align-self: center;
+  color: var(--color-main);
+  font-weight: 650;
+}
+
+.message-error {
+  border-color: #e08a8a;
+  background: #4a2630;
+  color: #fff;
+}
+
+.new-article {
+  width: min(100%, 42rem);
+  margin: 0 auto 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-details);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--color-font);
+}
+
+.new-article h2 {
+  margin-bottom: 0.75rem;
+  color: var(--color-headings);
+}
+
+.new-article form {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+#articles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
+
+.article-card {
+  padding: 1.25rem;
+  border: 1px solid var(--color-details);
+  border-radius: 0.75rem;
+  background: var(--surface);
+  color: var(--color-font);
+}
+
+.article-card h2 {
+  margin: 0 0 0.35rem;
+  color: var(--color-headings);
+  font-size: 1.25rem;
+}
+
+.article-author {
+  margin: 0 0 0.75rem;
+  color: #4b5273;
+  font-size: 0.85rem;
+}
+
+.article-body {
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.article-edit {
+  margin-top: 1rem;
+}
+
+.article-edit summary {
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.article-edit form {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.article-delete {
+  width: auto;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.button-danger {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.8rem;
+  border-color: #a13b4b;
+  background: #a13b4b;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.button-danger:hover {
+  border-color: #7d2b38;
+  background: #7d2b38;
+}
+
+#paginacio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+#paginacio .disabled {
+  color: var(--color-muted);
+}
+
+@media (max-width: 32rem) {
+  .articles-main {
+    width: calc(100% - 1.5rem);
   }
 }

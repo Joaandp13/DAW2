@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercici 7 · Diàlegs i temporitzadors</title>
+  <link rel="stylesheet" href="../estils.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Finestres · Exercici 7</p>
+    <h1>Diàlegs i temporitzadors</h1>
+    <p>
+      Practica <code>alert()</code>, <code>confirm()</code>, <code>prompt()</code>,
+      <code>setTimeout()</code>, <code>setInterval()</code>,
+      <code>requestAnimationFrame()</code> i <code>print()</code>.
+    </p>
+  </header>
+
+  <main>
+    <section class="panell">
+      <h2>Diàlegs natius</h2>
+      <p class="nota">
+        Aquests diàlegs bloquegen la finestra fins que l'usuari respon. Són
+        propietat de l'objecte <code>window</code>.
+      </p>
+      <div class="controls">
+        <button id="btnAlert" type="button">window.alert()</button>
+        <button id="btnConfirm" type="button" class="secundari">window.confirm()</button>
+        <button id="btnPrompt" type="button" class="secundari">window.prompt()</button>
+        <button id="btnImprimir" type="button" class="secundari">window.print()</button>
+      </div>
+      <pre id="sortidaDialegs" style="margin-top: 1rem;">Encara no s'ha mostrat cap diàleg.</pre>
+    </section>
+
+    <section class="panell">
+      <h2><code>setTimeout()</code> i <code>clearTimeout()</code></h2>
+      <p class="nota">
+        Programa un missatge per dins de 3 segons. També s'utilitza un
+        <code>setInterval()</code> per mostrar la compte enrere.
+      </p>
+      <p id="estatDiferit" class="estat">Cap missatge programat.</p>
+      <div class="controls" style="margin-top: 1rem;">
+        <button id="btnDiferit" type="button">Programa el missatge</button>
+        <button id="btnCancelarDiferit" type="button" class="perill">Cancel·la</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2><code>setInterval()</code> i <code>clearInterval()</code></h2>
+      <p class="nota">
+        Cronòmetre que incrementa els segons cada 1000 ms fins que l'aturem.
+      </p>
+      <p id="rellotge" class="rellotge">00:00</p>
+      <div class="controls">
+        <button id="btnIniciar" type="button">Inicia</button>
+        <button id="btnAturar" type="button" class="secundari">Atura</button>
+        <button id="btnReiniciar" type="button" class="perill">Reinicia</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2><code>requestAnimationFrame()</code></h2>
+      <p class="nota">
+        Anima la barra durant 2 segons. El navegador decideix quan executar cada
+        fotograma, normalment abans de pintar la pantalla.
+      </p>
+      <div class="barra"><div id="progres" class="progres"></div></div>
+      <div class="controls">
+        <button id="btnAnimacio" type="button">Inicia l'animació</button>
+        <button id="btnAturarAnimacio" type="button" class="secundari">Atura l'animació</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Registre</h2>
+      <ol id="log" class="log"></ol>
+    </section>
+  </main>
+</body>
+</html>

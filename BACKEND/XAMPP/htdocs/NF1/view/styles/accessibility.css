@@ -1,0 +1,60 @@
+/* Estils d'accessibilitat compartits per les còpies accessibles.
+   Originals: index.html i login.html (no modificats). */
+
+/* Enllaç de drecera: amagat fins que rep el focus */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0.5rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background: #EBB74A;
+    color: #10152A;
+    font-weight: 700;
+}
+.skip-link:focus {
+    top: 0.5rem;
+}
+
+/* Alternativa a la utilitat de Tailwind, per si el CDN no carrega */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Indicador de focus visible i amb prou contrast (gold sobre fons fosc) */
+:focus-visible {
+    outline: 2px solid #EBB74A;
+    outline-offset: 2px;
+}
+
+/* Per a controls sobre fons clar (pastilles del buscador): foldre fosc */
+.focus-dark:focus-visible {
+    outline: 2px solid #1B1B33;
+    outline-offset: 2px;
+}
+
+/* Files de resultats: cada fila és una parada de Tab (sense JavaScript) */
+tbody tr:focus-visible {
+    outline: 2px solid #EBB74A;
+    outline-offset: -2px;
+    background-color: #323A6E !important;
+}
+
+/* WCAG 2.3.3: respectar la preferència de moviment reduït */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}

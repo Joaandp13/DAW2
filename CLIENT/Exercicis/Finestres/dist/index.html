@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicis de Finestres · Índex</title>
+  <link rel="stylesheet" href="estils.css">
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Client · Bloc Finestres</p>
+    <h1>Exercicis de Finestres</h1>
+    <p>
+      Recull d'exercicis en TypeScript sobre l'objecte <code>window</code>:
+      finestres emergents, geometria, navegació, comunicació, temporitzadors i
+      emmagatzematge. Consulta el <code>README.md</code> del directori
+      <code>Finestres</code> per veure el resum teòric i les instruccions de
+      compilació.
+    </p>
+  </header>
+
+  <main>
+    <div class="graella">
+      <a class="targeta" href="1/hello.html">
+        <span class="num">Exercici 1</span>
+        <strong>Informació del sistema</strong>
+        <span class="desc">Pantalla, navegador i parts de la URL amb <code>screen</code>, <code>navigator</code> i <code>location</code>.</span>
+      </a>
+
+      <a class="targeta" href="2/hello.html">
+        <span class="num">Exercici 2</span>
+        <strong>Informació i marcs</strong>
+        <span class="desc">La mateixa informació dins d'un <code>&lt;iframe&gt;</code> i accés al seu document.</span>
+      </a>
+
+      <a class="targeta" href="3/index.html">
+        <span class="num">Exercici 3</span>
+        <strong>Obrir i controlar finestres</strong>
+        <span class="desc"><code>window.open</code>, popups bloquejats, <code>closed</code>, <code>focus</code>, <code>moveTo</code>, <code>resizeTo</code> i <code>close</code>.</span>
+      </a>
+
+      <a class="targeta" href="4/index.html">
+        <span class="num">Exercici 4</span>
+        <strong>Mides, posició i esdeveniments</strong>
+        <span class="desc">Mètriques en directe, <code>scroll</code>, <code>resize</code>, <code>matchMedia</code> i pantalla completa.</span>
+      </a>
+
+      <a class="targeta" href="5/index.html">
+        <span class="num">Exercici 5</span>
+        <strong>Location i history</strong>
+        <span class="desc">URL, <code>URLSearchParams</code>, hash, <code>pushState</code>, <code>replaceState</code>, <code>popstate</code> i <code>hashchange</code>.</span>
+      </a>
+
+      <a class="targeta" href="6/index.html">
+        <span class="num">Exercici 6</span>
+        <strong>Comunicació entre finestres</strong>
+        <span class="desc"><code>window.opener</code> i <code>postMessage</code> amb validació de <code>event.source</code> i <code>event.origin</code>.</span>
+      </a>
+
+      <a class="targeta" href="7/index.html">
+        <span class="num">Exercici 7</span>
+        <strong>Diàlegs i temporitzadors</strong>
+        <span class="desc"><code>alert</code>, <code>confirm</code>, <code>prompt</code>, <code>setTimeout</code>, <code>setInterval</code> i <code>requestAnimationFrame</code>.</span>
+      </a>
+
+      <a class="targeta" href="8/index.html">
+        <span class="num">Exercici 8</span>
+        <strong>Emmagatzematge i cicle de vida</strong>
+        <span class="desc"><code>localStorage</code>, <code>sessionStorage</code>, <code>storage</code>, <code>online/offline</code>, <code>beforeunload</code> i <code>BroadcastChannel</code>.</span>
+      </a>
+    </div>
+
+    <section class="panell" style="margin-top: 1.5rem;">
+      <h2>Com executar-ho</h2>
+      <p class="nota" style="margin-bottom: 0;">
+        Compila amb <code>npx tsc -p .</code> des de la carpeta
+        <code>Finestres</code> i serveix <code>dist</code> per HTTP, per exemple
+        amb <code>python -m http.server 8099 --directory dist</code>. No obris
+        aquests HTML amb <code>file://</code>: els mòduls, els popups i
+        <code>postMessage</code> no funcionaran igual.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

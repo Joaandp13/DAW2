@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercici 4 · Mides, posició i esdeveniments</title>
+  <link rel="stylesheet" href="../estils.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Finestres · Exercici 4</p>
+    <h1>Mides, posició i esdeveniments de la finestra</h1>
+    <p>
+      Consulta en directe <code>innerWidth</code>, <code>outerWidth</code>,
+      <code>screenX</code>, <code>devicePixelRatio</code>, <code>scrollY</code>…
+      i prova <code>moveTo()</code>, <code>resizeTo()</code>,
+      <code>scrollTo()</code> i la pantalla completa.
+    </p>
+  </header>
+
+  <main>
+    <section class="panell">
+      <h2>Mètriques en directe</h2>
+      <p class="nota">
+        Els valors s'actualitzen amb <code>requestAnimationFrame</code> quan hi ha
+        un <code>resize</code> o un <code>scroll</code>.
+      </p>
+      <pre id="metrics"></pre>
+    </section>
+
+    <section class="panell">
+      <h2>Media queries de la finestra</h2>
+      <p class="nota">
+        <code>window.matchMedia()</code> permet adaptar el comportament segons les
+        característiques del dispositiu i de la finestra.
+      </p>
+      <pre id="mitjans"></pre>
+    </section>
+
+    <section class="panell">
+      <h2>Accions sobre la finestra</h2>
+      <div class="controls">
+        <button id="btnAvall" type="button">Desplaça't 300px avall</button>
+        <button id="btnDalt" type="button" class="secundari">Torna a dalt</button>
+        <button id="btnMoure" type="button" class="secundari">Mou a (0, 0)</button>
+        <button id="btnRedimensionar" type="button" class="secundari">Redimensiona a 900×650</button>
+        <button id="btnCompleta" type="button" class="secundari">Pantalla completa</button>
+        <button id="btnActualitzar" type="button" class="secundari">Actualitza</button>
+      </div>
+      <p class="nota" style="margin-top: 1rem; margin-bottom: 0;">
+        Alguns navegadors ignoren <code>moveTo()</code> i <code>resizeTo()</code>
+        quan la finestra no s'ha obert amb <code>window.open()</code>. Mira el
+        registre per saber què ha passat.
+      </p>
+    </section>
+
+    <section class="panell">
+      <h2>Registre d'esdeveniments</h2>
+      <ol id="log" class="log"></ol>
+    </section>
+
+    <div class="espai-desplacament">
+      <p>
+        Zona de desplaçament<br>
+        Baixa fins aquí per comprovar com canvia <code>scrollY</code> a la secció
+        de mètriques.
+      </p>
+    </div>
+  </main>
+</body>
+</html>

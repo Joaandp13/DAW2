@@ -1,0 +1,1 @@
+{"version":3,"file":"tipus.js","sourceRoot":"","sources":["../../Xat/tipus.ts"],"names":[],"mappings":"","sourcesContent":["export interface Message {\r\n    id: number;\r\n    user: string;\r\n    text: string;\r\n    type: \"message\" | \"clear\";\r\n}"]}

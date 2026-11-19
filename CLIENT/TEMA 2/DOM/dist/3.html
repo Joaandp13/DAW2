@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 - Panell animat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 12px 0;
+        }
+
+        td {
+            border: 1px solid #888;
+            width: 42px;
+            height: 28px;
+            padding: 0;
+            text-align: center;
+        }
+
+        .controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main id="app">
+        <h3>3 - Panell animat</h3>
+        <p>Utilitzant els mòduls anteriors, crea una taula semblant a la següent:</p>
+
+        <div id="panel"></div>
+
+        <div class="controls">
+            <button id="leftButton" type="button">Esquerra</button>
+            <button id="rightButton" type="button">Dreta</button>
+        </div>
+        <p id="instructions">Fes clic als botons per desplaçar les fletxes horitzontalment.</p>
+
+        <hr>
+        <h3>1 i 2 - Pantalla completa i portapapers</h3>
+        <div class="controls">
+            <button id="fullscreenButton" type="button" aria-label="Activa la pantalla completa">⛶</button>
+            <button id="copyButton" type="button">Copia el panell</button>
+            <button id="pasteButton" type="button">Enganxa al final</button>
+        </div>
+        <p id="clipboardStatus" role="status" aria-live="polite"></p>
+        <div id="pasteTarget"></div>
+    </main>
+
+    <script type="module" src="./1/animatedPanel.js"></script>
+    <script type="module" src="./2/fullScreen.js"></script>
+    <script type="module" src="./2/clipboard.js"></script>
+</body>
+</html>

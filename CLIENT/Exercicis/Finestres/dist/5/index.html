@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercici 5 · Location i history</title>
+  <link rel="stylesheet" href="../estils.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Finestres · Exercici 5</p>
+    <h1>Navegació: <code>location</code> i <code>history</code></h1>
+    <p>
+      Llegeix totes les parts de la URL, modifica el query string i el hash, i
+      crea entrades d'historial amb <code>pushState()</code> i
+      <code>replaceState()</code> sense recarregar la pàgina.
+    </p>
+  </header>
+
+  <main>
+    <section class="panell">
+      <h2>Pàgina actual</h2>
+      <p id="vistaActual" class="estat">Carregant…</p>
+    </section>
+
+    <div class="dues-columnes">
+      <section class="panell">
+        <h2><span class="insignia">location</span> Parts de la URL</h2>
+        <pre id="locationInfo"></pre>
+      </section>
+
+      <section class="panell">
+        <h2><span class="insignia">history</span> Historial</h2>
+        <pre id="historyInfo"></pre>
+      </section>
+    </div>
+
+    <section class="panell">
+      <h2>Modificar el query string</h2>
+      <p class="nota">
+        S'aplica amb <code>URLSearchParams</code> i <code>pushState()</code>.
+      </p>
+      <div class="camps">
+        <label for="queryClau">Clau
+          <input type="text" id="queryClau" placeholder="lang">
+        </label>
+        <label for="queryValor">Valor
+          <input type="text" id="queryValor" placeholder="ca">
+        </label>
+        <label for="hashInput">Hash (sense #)
+          <input type="text" id="hashInput" placeholder="seccio-2">
+        </label>
+      </div>
+      <div class="controls">
+        <button id="btnQuery" type="button">Afegeix / modifica query</button>
+        <button id="btnHash" type="button" class="secundari">Aplica el hash</button>
+        <button id="btnNetejar" type="button" class="secundari">Neteja el query</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Historial i navegació</h2>
+      <div class="controls">
+        <button id="btnVistaA" type="button">pushState vista A</button>
+        <button id="btnVistaB" type="button">pushState vista B</button>
+        <button id="btnReplace" type="button" class="secundari">replaceState vista</button>
+        <button id="btnBack" type="button" class="secundari">history.back()</button>
+        <button id="btnForward" type="button" class="secundari">history.forward()</button>
+        <button id="btnGo2" type="button" class="secundari">history.go(-2)</button>
+        <button id="btnReload" type="button" class="perill">location.reload()</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Registre d'esdeveniments</h2>
+      <p class="nota">
+        Els botons <em>Torna enrere</em> i <em>Endavant</em> del navegador també
+        disparen <code>popstate</code> i <code>hashchange</code>.
+      </p>
+      <ol id="log" class="log"></ol>
+    </section>
+  </main>
+</body>
+</html>

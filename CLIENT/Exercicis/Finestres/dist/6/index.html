@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercici 6 · Comunicació entre finestres</title>
+  <link rel="stylesheet" href="../estils.css">
+  <script type="module" src="pare.js"></script>
+</head>
+<body>
+  <header>
+    <p class="etiqueta">Finestres · Exercici 6 · Finestra pare</p>
+    <h1>Comunicació entre finestres amb <code>postMessage()</code></h1>
+    <p>
+      La finestra pare obre una filla i intercanvia missatges amb ella. També es
+      mostra com validar la font (<code>event.source</code>) i l'origen
+      (<code>event.origin</code>) dels missatges.
+    </p>
+  </header>
+
+  <main>
+    <section class="panell">
+      <h2>Finestra filla</h2>
+      <p id="estatFill" class="estat">Carregant…</p>
+      <div class="controls" style="margin-top: 1rem;">
+        <button id="btnObrir" type="button">Obrir finestra filla</button>
+        <button id="btnTancar" type="button" class="perill">Tancar finestra filla</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Enviar un missatge</h2>
+      <p class="nota">
+        El missatge viatja com un objecte gràcies a
+        <code>finestra.postMessage({ tipus: "text", text }, "*")</code>.
+      </p>
+      <div class="camps">
+        <label for="missatge">Text per al fill
+          <input type="text" id="missatge" placeholder="Hola des del pare!">
+        </label>
+      </div>
+      <div class="controls">
+        <button id="btnEnviar" type="button">Enviar text</button>
+        <button id="btnMides" type="button" class="secundari">Demanar mides</button>
+        <button id="btnTancarFill" type="button" class="secundari">Ordenar tancament</button>
+        <button id="btnNetejar" type="button" class="secundari">Netejar registre</button>
+      </div>
+    </section>
+
+    <section class="panell">
+      <h2>Registre de missatges</h2>
+      <ol id="log" class="log"></ol>
+    </section>
+  </main>
+</body>
+</html>

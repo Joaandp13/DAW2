@@ -1,88 +1,154 @@
-
-
-
 <?php
-
+/**
+ * Joan Diaz - Pràctica 04
+ *
+ * Controlador de les operacions d'escriptura de builds.
+ * Només accepta POST d'usuaris autenticats i comprova la propietat a la BDD.
+ * Valida els 4 personatges (diferents, existents i amb imatge) abans de desar.
+ * Després de l'operació redirigeix (PRG) per evitar reenviaments.
+ */
+require_once __DIR__ . '/../../core/auth.php';
+require_once __DIR__ . '/../../core/validacio.php';
+require_once __DIR__ . '/../../core/format.php';
 require_once __DIR__ . '/../../Model/article.model.php';
+require_once __DIR__ . '/../../Model/personatge.model.php';
+
+iniciarSessio();
+
+$usuariId = idUsuariActual();
+if ($usuariId === null) {
+    posarFlash('error', 'Has d\'iniciar sessió per gestionar builds.');
+    header('Location: login.php');
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    header('Allow: POST');
-    exit('Method not allowed.');
+    header('Location: index.php');
+    exit;
 }
 
 $errors = [];
-$action = $_POST['action'] ?? null;
+$missatge = '';
+$action = textNet($_POST['action'] ?? null);
+$id = 0;
+$dades = [
+    'titol'   => textNet($_POST['titol'] ?? null),
+    'cos'     => textNet($_POST['cos'] ?? null),
+    'reaccio' => textNet($_POST['reaccio'] ?? null),
+    'rol'     => textNet($_POST['rol'] ?? null),
+    'dps'     => filter_var($_POST['dps'] ?? null, FILTER_VALIDATE_INT, ['options' => ['min_range' => 0]]),
+];
+$personatgeIds = [];
 
-if (!is_string($action) || !in_array($action, ['insert', 'consult'], true)) {
-    $errors[] = 'L’acció ha de ser insert o consult.';
-} elseif ($action === 'insert') {
-    $titol = $_POST['titol'] ?? null;
-    $cos = $_POST['cos'] ?? null;
+if (!in_array($action, ['insert', 'update', 'delete'], true)) {
+    $errors[] = 'L\'acció indicada no és vàlida.';
+}
 
-    if (!is_string($titol)) {
-        $errors[] = 'El títol ha de ser un text.';
-    } else {
-        $titol = trim(strip_tags($titol));
-        $titleLength = mb_strlen($titol, 'UTF-8');
+if ($action === 'update' || $action === 'delete') {
+    $id = filter_var($_POST['id'] ?? null, FILTER_VALIDATE_INT);
+    if ($id === false || $id < 1) {
+        $errors[] = 'L\'identificador ha de ser un enter positiu.';
+        $id = 0;
+    }
+}
 
-        if ($titleLength < 1 || $titleLength > 50) {
-            $errors[] = 'El títol ha de tenir entre 1 i 50 caràcters.';
+if ($action === 'insert' || $action === 'update') {
+    // Dades bàsiques del build.
+    if ($dades['titol'] === '' || mb_strlen($dades['titol'], 'UTF-8') > 50) {
+        $errors[] = 'El títol és obligatori i no pot superar els 50 caràcters.';
+    }
+    if ($dades['cos'] === '') {
+        $errors[] = 'La descripció del build és obligatòria.';
+    }
+    if ($dades['reaccio'] === '' || mb_strlen($dades['reaccio'], 'UTF-8') > 50) {
+        $errors[] = 'La reacció és obligatòria i no pot superar els 50 caràcters.';
+    }
+    if (!in_array($dades['rol'], rolsPermesos(), true)) {
+        $errors[] = 'Selecciona un rol vàlid.';
+    }
+    if ($dades['dps'] === false) {
+        $errors[] = 'El DPS ha de ser un número enter positiu.';
+        $dades['dps'] = 0;
+    }
+
+    // Exactament 4 personatges, diferents, existents i amb imatge.
+    $entrada = $_POST['personatges'] ?? [];
+    if (!is_array($entrada)) {
+        $entrada = [];
+    }
+    foreach ($entrada as $valor) {
+        $personatgeId = filter_var($valor, FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
+        if ($personatgeId !== false) {
+            $personatgeIds[] = (int) $personatgeId;
         }
     }
 
-    if (!is_string($cos)) {
-        $errors[] = 'El cos de l’article ha de ser un text.';
+    if (count($personatgeIds) !== 4) {
+        $errors[] = 'Has de triar exactament 4 personatges.';
+    } elseif (count(array_unique($personatgeIds)) !== 4) {
+        $errors[] = 'Els 4 personatges han de ser diferents.';
     } else {
-        $cos = trim(strip_tags($cos));
-    }
-} elseif ($action === 'consult') {
-    $id = $_POST['id'] ?? null;
-    $titol = $_POST['titol'] ?? null;
-
-    if (($id === null) === ($titol === null)) {
-        $errors[] = 'Indica un identificador o un títol per consultar l’article.';
-    } elseif ($id !== null) {
-        if (!is_string($id) || filter_var($id, FILTER_VALIDATE_INT) === false || (int) $id < 1) {
-            $errors[] = 'L’identificador ha de ser un enter positiu.';
-        }
-    } else {
-        if (!is_string($titol)) {
-            $errors[] = 'El títol ha de ser un text.';
+        $catalog = (new Personatge())->cercarPerIds($personatgeIds);
+        if (count($catalog) !== 4) {
+            $errors[] = 'Algun dels personatges triats no existeix.';
         } else {
-            $titol = trim(strip_tags($titol));
-            $titleLength = mb_strlen($titol, 'UTF-8');
-
-            if ($titleLength < 1 || $titleLength > 50) {
-                $errors[] = 'El títol ha de tenir entre 1 i 50 caràcters.';
+            foreach ($personatgeIds as $personatgeId) {
+                $personatge = $catalog[$personatgeId];
+                if (trim((string) $personatge['imatge']) === '') {
+                    $errors[] = 'El personatge ' . $personatge['nom'] . ' no té imatge i no es pot publicar.';
+                }
             }
         }
     }
 }
 
-if ($errors !== []) {
-    http_response_code(400);
-    echo '<h1>La sol·licitud no és vàlida</h1><ul>';
-    foreach ($errors as $error) {
-        echo '<li>' . htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . '</li>';
-    }
-    echo '</ul><a href="../../view/Article/insertarArticle.php">Tornar</a>';
-    exit;
-}
+if ($errors === []) {
+    try {
+        $model = new Article();
 
-if ($errors == []){
-    if($action === 'insert'){
-        $article = new Article();
-        $result = $article->insertarNouArticle(['titol' => $titol, 'cos' => $cos]);
-        if ($result === 0) {
-            http_response_code(500);
-            echo '<h1>Error en la sol·licitud</h1><p>No s’ha pogut insertar l’article.</p><a href="../../view/Article/insertarArticle.php">Tornar</a>';
+        if ($action === 'insert') {
+            $idNou = $model->insertarNouArticle($dades, $personatgeIds, $usuariId);
+            posarFlash('ok', 'Build publicat correctament.');
+            header('Location: build.php?id=' . $idNou);
             exit;
         }
-        else{
-            echo '<h1>Article inserit correctament</h1><p>L’article amb id ' . htmlspecialchars($result, ENT_QUOTES, 'UTF-8') . ' s’ha inserit correctament.</p><a href="../../view/Article/insertarArticle.php">Tornar</a>';
+
+        if ($action === 'update') {
+            $actualitzat = $model->modificarPerId($id, $dades, $personatgeIds, $usuariId);
+            if ($actualitzat) {
+                posarFlash('ok', 'Build modificat correctament.');
+                header('Location: build.php?id=' . $id);
+                exit;
+            }
+            $errors[] = 'No s\'ha trobat el build o no ets el seu autor.';
+        } elseif ($action === 'delete') {
+            $esborrat = $model->esborrarPerId($id, $usuariId);
+            if ($esborrat) {
+                posarFlash('ok', 'Build esborrat correctament.');
+                header('Location: index.php');
+                exit;
+            }
+            $errors[] = 'No s\'ha trobat el build o no ets el seu autor.';
         }
+    } catch (PDOException $error) {
+        error_log('Error de base de dades en la gestió de builds: ' . $error->getMessage());
+        $errors[] = 'No s\'ha pogut completar l\'operació amb la base de dades.';
     }
 }
 
-?>
+// Errors: conservem les dades del formulari i tornem al formulari.
+if ($errors !== []) {
+    $_SESSION['build_old'] = [
+        'titol'       => $dades['titol'],
+        'cos'         => $dades['cos'],
+        'reaccio'     => $dades['reaccio'],
+        'rol'         => $dades['rol'],
+        'dps'         => $dades['dps'] === false ? '' : (string) $dades['dps'],
+        'personatges' => $personatgeIds,
+    ];
+    posarFlash('error', implode(' ', $errors));
+}
+
+$desti = $action === 'update' && $id > 0 ? 'build_form.php?id=' . $id : 'build_form.php';
+header('Location: ' . $desti);
+exit;
