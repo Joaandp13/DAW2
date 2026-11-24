@@ -4,7 +4,7 @@ BACKEND/XAMPP/*
 BACKEND/XAMPP/htdocs/*
 !BACKEND/XAMPP/htdocs/NF1/
 !BACKEND/XAMPP/htdocs/NF1/**
-
+BACKEND/XAMPP/htdocs/NF1/vendor
 # Contenido por defecto de htdocs (tus proyectos NO se ignoran)
 BACKEND/XAMPP/htdocs/applications.html
 BACKEND/XAMPP/htdocs/bitnami.css
@@ -14,7 +14,7 @@ BACKEND/XAMPP/htdocs/dashboard/
 BACKEND/XAMPP/htdocs/img/
 BACKEND/XAMPP/htdocs/webalizer/
 BACKEND/XAMPP/htdocs/xampp/
-
+BACKEND/XAMPP/htdocs/NF1/.env
 # ===== Vagrant =====
 .vagrant/
 DESPLEGAMENT/Docker

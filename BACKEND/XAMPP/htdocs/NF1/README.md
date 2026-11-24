@@ -8,7 +8,7 @@ S'ha redissenyat la portada segons `accessible/index.html` (Tailwind CDN + `acce
 
 - **Portada (`index.php`):** banners i esdeveniments laterals, filtres funcionals i paginació de **5 builds per pàgina** (en lloc del «Load more» del disseny).
 - **Filtres:** títol, autor, reacció, rol i ordre (`likes`, `views`, `recent`). Els filtres es conserven en enllaçar a les altres pàgines.
-- **Targeta:** element deduït del personatge de la posició 1, 4 retrats amb el nom com a `alt`, rol, DPS compacte (`142000` → `142K`), reacció, autor, vistes i likes (aquests dos, només de lectura). El títol enllaça a `build.php`.
+- **Targeta:** element deduït del personatge de la posició 1, 4 retrats amb el nom com a `alt`, rol, DPS compacte (`142000` → `142K`), reacció, autor, vistes i likes funcionals. El títol enllaça a `build.php`. Els likes són persistents per usuari autenticat (taula `article_likes`); els anònims són redirigits al login.
 - **Ficha (`build.php?id=...`):** mostra tots els camps de la targeta, els 4 personatges amb posició/element/arma/rareza i la descripció (`cos`). Només l'autor veu «Edita» i «Esborra».
 - **Formulari (`build_form.php`):** títol, descripció, reacció (obligatòria), rol, DPS enter i 4 personatges diferents. No es pot publicar si falta imatge, si un personatge no existeix o si es repeteix.
 - **Catàleg admin (`personatges.php`):** pantalla web per afegir/editar/esborrar personatges; només accessible amb `admin = 1`. La foto es pot escriure a mà o pujar amb el selector de fitxers (PNG/WebP, màx. 2 MB, desat a `img/personatges/<id_externo>.ext`). Un personatge en ús no es pot esborrar.
@@ -33,7 +33,7 @@ Taula `personatges` (catàleg reutilitzable):
 | `rareza` | tinyint unsigned | només el número (4, 5...) |
 | `arma` | ENUM | `Sword`, `Claymore`, `Polearm`, `Bow`, `Catalyst` |
 
-Taula `articles` (un build): `id`, `titol`, `cos`, `usuari_id` (FK a `usuaris`, `ON DELETE SET NULL`), `reaccio`, `rol` (`main-dps`, `sub-dps`, `support`), `dps` (enter), `vistas`, `likes`, `created_at` (`DEFAULT CURRENT_TIMESTAMP`). **L'element no s'hi desa**: es calcula a la vista a partir del personatge 1.
+Taula `articles` (un build): `id`, `titol`, `cos`, `usuari_id` (FK a `usuaris`, `ON DELETE SET NULL`), `reaccio`, `rol` (`main-dps`, `sub-dps`, `support`), `dps` (enter), `vistas`, `likes`, `created_at` (`DEFAULT CURRENT_TIMESTAMP`). **L'element no s'hi desa**: es calcula a la vista a partir del personatge 1. Les `vistas` s'incrementen en obrir la fitxa (una vegada per sessió/build). Els `likes` són persistents per usuari autenticat a `article_likes` (PK `article_id, usuari_id`, FKs CASCADE) i el comptador `articles.likes` es sincronitza en cada toggle.
 
 Taula `article_personatge`: `article_id`, `personatge_id`, `posicio` (1..4). Clau primària `(article_id, posicio)` i clau única `(article_id, personatge_id)` per evitar personatges repetits. Les FK usen `CASCADE` en esborrar el build i `RESTRICT` en esborrar un personatge en ús.
 
@@ -46,7 +46,7 @@ Taula `article_personatge`: `article_id`, `personatge_id`, `posicio` (1..4). Cla
 3. Comprova la connexió a `core/db_conn.php` (`root` sense contrasenya per defecte, BDD `backend_joan_diaz`).
 4. Registra un usuari des de `register.php`. Per accedir a l'administració, posa `admin = 1` a aquest usuari des de phpMyAdmin.
 5. Obre `personatges.php` amb aquest usuari i afegeix personatges. Pots escriure la ruta a mà o bé prémer «Examina els fitxers» i triar un PNG/WebP de màxim 2 MB: es guardarà a `img/personatges/<id_externo>.ext` (si el nom ja existeix, s'afegeix `_1`, `_2`...). Si hi ha fitxer triat, aquest substitueix la ruta escrita. Les carpetes d'assets ja existeixen.
-6. Obre `index.php` i crea builds amb «Nou build». També pots posar `vistas` i `likes` des de phpMyAdmin: la web no els modifica.
+6. Obre `index.php` i crea builds amb «Nou build». Les vistes s'incrementen en obrir la fitxa i els likes es poden donar/treure des de la web; també es poden ajustar manualment des de phpMyAdmin si cal.
 
 ## Fitxers nous i modificats
 
